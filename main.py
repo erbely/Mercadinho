@@ -56,8 +56,17 @@ produto3 = {
 }
 
 """
-# Starting our estoque empty
-estoque = [] # Incialiação de lista vazia, uma vez que não há BD
+import database
+import os
+
+banco = "estoque.json"
+
+if os.path.isfile(banco):
+    # Load Database
+    estoque = database.read_json(banco)
+else:
+    # Starting our estoque empty
+    estoque = [] # Incialiação de lista vazia, uma vez que não há BD
 
 def add_estoque(x):
     print("Produto {} adicionado com sucesso!".format(x["nome"]))
@@ -113,7 +122,7 @@ def add_produto(nova_qtde, nome, unit_value):
         estoque[id_para_somar]["qtde"] += nova_qtde
         print(estoque[id_para_somar]["qtde"])
         print("Quantidade {} adicionada ao produto {}".format(nova_qtde, estoque[id_para_somar]["nome"]))
-
+"""
 add_produto(3, "bolacha traquinas", 2)
 add_produto(5, "cerveja Itaipava", 1.70)
 add_produto(7, "Jamelão", 4.50)
@@ -122,10 +131,15 @@ add_produto(55, "dinheiro de brinquedo", 1.00)
 add_produto(20, "bala juquinha", 0.10)
 add_produto(15, "Manga Gala", 0.80)
 add_produto(7, "Super Massa Grow", 5.50)
-
+"""
 def consulta_estoque():
     for value in estoque:
         print("Nome: {} \t\t quantidade: {} valor de compra: \t\t {} total gasto: {}".format(value["nome"],value["qtde"],value["unit_value"],value["qtde"] * value["unit_value"]))
+
+
+database.save_json(banco,estoque)
+
+consulta_estoque()
 
 # print("Itens no estoque: {} {} {}".format(estoque[0]["nome"],estoque[0]["qtde"],estoque[0]["unit_value"]))
 """
