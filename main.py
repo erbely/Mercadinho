@@ -93,13 +93,21 @@ def verifica_se_produto_existe(nome_do_produto): # Tang
 #TODO criar função preço_de_venda - verifica se o campo price eh igual a 0, e usa a formula nesse campo.
 #TODO criar front end flask
 #TODO criar em docker
-#TOO DOE Banco de dados em JSON
+#TODO Banco de dados em JSON - OK
 
 def adicionar_quantidade():
     pass
 
-def preco_de_venda():
-    pass
+def preco_de_venda(porcentagem):
+    print("adicionando {}% aos produtos".format(porcentagem))
+    lucro_bruto = 0
+    for value in estoque:
+        aumento = value["unit_value"] * (porcentagem / 100)
+        lucro_bruto += aumento
+        # print(f'valor do aumento {aumento}')
+        # print('valor do aumento {}'.format(aumento))
+        value["price"] = value["unit_value"] + aumento
+    return lucro_bruto
 
 def add_produto(nova_qtde, nome, unit_value):
     resposta, id_para_somar = verifica_se_produto_existe(nome)
@@ -122,6 +130,7 @@ def add_produto(nova_qtde, nome, unit_value):
         estoque[id_para_somar]["qtde"] += nova_qtde
         print(estoque[id_para_somar]["qtde"])
         print("Quantidade {} adicionada ao produto {}".format(nova_qtde, estoque[id_para_somar]["nome"]))
+
 """
 add_produto(3, "bolacha traquinas", 2)
 add_produto(5, "cerveja Itaipava", 1.70)
@@ -134,10 +143,13 @@ add_produto(7, "Super Massa Grow", 5.50)
 """
 def consulta_estoque():
     for value in estoque:
-        print("Nome: {} \t\t quantidade: {} valor de compra: \t\t {} total gasto: {}".format(value["nome"],value["qtde"],value["unit_value"],value["qtde"] * value["unit_value"]))
+        print("Nome: {} quantidade: {} valor de compra: {}  valor de venda: {} total gasto: {}".format(value["nome"],value["qtde"],value["unit_value"],value["price"],value["qtde"] * value["unit_value"]))
+    print("Lucro Bruto: {}".format(lucro_bruto))
 
 
 database.save_json(banco,estoque)
+
+lucro_bruto = preco_de_venda(45)
 
 consulta_estoque()
 

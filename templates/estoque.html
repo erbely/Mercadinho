@@ -1,0 +1,16 @@
+{% extends "layout.html" %}
+{% block conteudo %}
+<div class="row">
+{% for item in data %}
+<div class="col-sm-3">
+    <div class="card border-success mb-3" style="max-width: 25rem;">
+      <div class="card-header">{{ item.nome }}</div>
+      <div class="card-body text-success">
+        <h5 class="card-title">Preco: R$ {{ item.unit_value }}</h5>
+        <p class="card-text">Quantidade: {{ item.qtde }}</p>
+      </div>
+    </div>
+  </div>
+{% endfor %}
+</div>
+{% endblock conteudo %}
