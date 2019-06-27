@@ -179,5 +179,5 @@ def main():
 
         #print("Toma ai o seu total total:", total_total_total)
 
-if __name__ == '__main__':
-    main()
+#if __name__ == '__main__':
+#    main()

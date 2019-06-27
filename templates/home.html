@@ -1,4 +1,6 @@
 {% extends "layout.html" %}
 {% block conteudo %}
-  <h1>Home is my home</h1>
+{% for item in data %}
+{{ item[8] }}
+{% endfor %}
 {% endblock conteudo %}
