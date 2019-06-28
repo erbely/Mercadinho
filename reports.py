@@ -5,7 +5,7 @@ from sqlite3 import Error
 import datetime
 
 # What we want here?
-# Ticket number, Client name, Date of visit, Requirer email, title, request, time spent, closed comment.
+# Ticket number, Client name, Close at , Requirer email, title, request, time spent, closed comment.
 def create_connection(db_file):
     """ create a database connection to the SQLite database
         specified by the db_file

@@ -1,0 +1,51 @@
+{% extends "layout.html" %}
+{% block conteudo %}
+<!--
+{% for cli in clients %}
+{{ cli[0] }}<br>
+{% endfor %}
+<p>
+{% for item in data %}
+Ticket: {{ item[0] }}<br>
+Cliente: {{ item[1] }}<br>
+Fechamento: {{ item[2] }}<br>
+Solicitante: {{ item[3] }}<br>
+O que foi solicitado: {{ item[4] }}: {{ item[5] }}<br>
+Tempo Gasto: {{ item[6] }}<br>
+Solucao: {{ item[7] }}<br><p>
+{% endfor %}
+<!-- Example single danger button -->
+<div class="btn-group">
+  <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    Clientes
+  </button>
+  <div class="dropdown-menu">
+    {% for cli in clients %}
+    <a class="dropdown-item" href="#">{{ cli[0] }}</a>
+    {% endfor %}
+  </div>
+</div>
+
+<div class="btn-group">
+  <button type="button" class="btn btn-light dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    Período
+  </button>
+  <div class="dropdown-menu">
+    {% for cli in clients %}
+    <a class="dropdown-item" href="#">{{ cli[0] }}</a>
+    {% endfor %}
+  </div>
+</div>
+
+<div class="btn-group">
+  <button type="button" class="btn btn-dark dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    Tipo de Cliente
+  </button>
+  <div class="dropdown-menu">
+    {% for cli in clients %}
+    <a class="dropdown-item" href="#">{{ cli[0] }}</a>
+    {% endfor %}
+  </div>
+</div>
+
+{% endblock conteudo %}
